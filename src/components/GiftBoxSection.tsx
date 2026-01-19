@@ -1,0 +1,378 @@
+import React, { useState } from 'react';
+import tokri from "../assets/images/tokri.png"
+
+interface GiftBox {
+  id: number;
+  name: string;
+  image: string;
+  title: string;
+  price: string;
+  description: string;
+}
+
+const GIFT_BOXES: GiftBox[] = [
+  {
+    id: 1,
+    name: 'SUMMER SYMPHONY',
+    image: '/src/assets/images/Gemini_Generated_Image_wghp64wghp64wghp 1 (1).png',
+    title: 'LUXURY GIFT BOX',
+    price: '₹2,500',
+    description: 'BOX CONTAINS: SUBLIME SIGNATURE BLACK TEA - 100G SUBLIME SIGNATURE EARL GREY-50G REGIONAL RAW HONEY - 225G SALTED ALMONDS - 55G HONEY ALMONDS - 50G CLOVE - 50G CINNAMON - 50G BRASS TEA INFUSER - 1PC PRESENT YOUR LOVED ONES WITH OPULENCE AND WELL-BEING WITH SUBLIME HOUSE OF TEA\'S...',
+  },
+  {
+    id: 2,
+    name: 'WELLNESS WONDER',
+    image: '/src/assets/images/Gemini_Generated_Image_wghp64wghp64wghp 2 (1).png',
+    title: 'WELLNESS WONDER',
+    price: '₹1,500',
+    description: 'BOX CONTAINS: SUBLIME SIGNATURE BLACK TEA - 100G REGIONAL RAW HONEY - 225G SALTED ALMONDS - 55G HONEY ALMONDS - 50G CLOVE - 50G CINNAMON - 50G BRASS TEA INFUSER - 1PC PRESENT YOUR LOVED ONES WITH OPULENCE AND WELL-BEING WITH SUBLIME HOUSE OF TEA\'S...',
+  },
+  {
+    id: 3,
+    name: 'BOUQUET OF HIVE',
+    image: '/src/assets/images/Gemini_Generated_Image_wghp64wghp64wghp 3 (1).png',
+    title: 'BOUQUET OF HIVE TO HOME',
+    price: '₹3,500',
+    description: 'BOX CONTAINS: SUBLIME SIGNATURE BLACK TEA - 100G SUBLIME SIGNATURE EARL GREY-50G REGIONAL RAW HONEY - 225G SALTED ALMONDS - 55G HONEY ALMONDS - 50G CLOVE - 50G CINNAMON - 50G BRASS TEA INFUSER - 1PC PRESENT YOUR LOVED ONES WITH OPULENCE AND WELL-BEING WITH SUBLIME HOUSE OF TEA\'S...',
+  },
+  {
+    id: 4,
+    name: 'BOX OF SERENITY',
+    image: '/src/assets/images/Gemini_Generated_Image_wghp64wghp64wghp 4 (1).png',
+    title: 'BOX OF SERENITY',
+    price: '₹4,500',
+    description: 'BOX CONTAINS: SUBLIME SIGNATURE BLACK TEA - 100G SUBLIME SIGNATURE EARL GREY-50G REGIONAL RAW HONEY - 225G SALTED ALMONDS - 55G HONEY ALMONDS - 50G CLOVE - 50G CINNAMON - 50G BRASS TEA INFUSER - 1PC PRESENT YOUR LOVED ONES WITH OPULENCE AND WELL-BEING WITH SUBLIME HOUSE OF TEA\'S...',
+  },
+];
+
+const SMALL_PRODUCTS = [
+  { id: 1, image: '/src/assets/images/Gemini_Generated_Image_l4pps7l4pps7l4pp 6.png' },
+  { id: 2, image: '/src/assets/images/Gemini_Generated_Image_l4pps7l4pps7l4pp 7.png' },
+  { id: 3, image: '/src/assets/images/Gemini_Generated_Image_l4pps7l4pps7l4pp 8.png' },
+  { id: 4, image: '/src/assets/images/Gemini_Generated_Image_l4pps7l4pps7l4pp 9.png' },
+];
+
+const GiftBoxSection: React.FC = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? GIFT_BOXES.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev === GIFT_BOXES.length - 1 ? 0 : prev + 1));
+  };
+
+  const currentGiftBox = GIFT_BOXES[currentIndex];
+
+  return (
+    <section className="w-full bg-[#E4DEC9] py-8 sm:py-12 lg:py-16 overflow-hidden">
+      <div className="w-full relative max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
+        {/* Section Header */}
+          <div className='absolute opacity-30 h-48 -top-20'>
+            <img src={tokri} alt="" className='h-full'/>
+          </div>
+           <div className='absolute  h-32 right-0 -top-10'>
+            <img src={tokri} alt="" className='h-full'/>
+          </div>
+        <div className="mb-6 z-10 text-center sm:mb-8 lg:mb-10">
+        
+          <p style={{
+                  fontFamily: "'gotham2', sans-serif",
+                  fontWeight: 100,
+
+                  fontSize: '14px',
+                  lineHeight: '100%',
+                  letterSpacing: '0%',
+                }}  className="text-black w-fit mx-auto text-xs sm:text-sm tracking-[0.15em] sm:tracking-[0.25em] uppercase mb-2 font-karla flex items-center gap-2">
+            THOUGHTFUL GIFTS, BEAUTIFULLY BOXED
+            <svg className="w-3 h-3 sm:w-4 sm:h-4 text-[#4A5D4F]" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+          </p>
+          <h2 style={{
+                  fontFamily: "'gotham', sans-serif",
+                  fontWeight: 100,
+
+                  fontSize: '38px',
+                  lineHeight: '100%',
+                  letterSpacing: '0%',
+                }}  className="text-[#B89B49] text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-lora leading-tight">
+            Surprises Packed With Joy
+          </h2>
+        </div>
+
+        {/* Main Layout - 3 Columns */}
+        <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-8">
+          {/* Left Column - Small Product Thumbnails - 1 column */}
+          <div className="hidden lg:flex lg:col-span-1 flex-col justify-center gap-3">
+            {SMALL_PRODUCTS.map((product) => (
+              <div
+                key={product.id}
+                className="overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+                style={{
+                  width: '90px',
+                  height: '91px',
+                  borderRadius: '10px',
+                }}
+              >
+                <img
+                  src={product.image}
+                  alt={`Product ${product?.id}`}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=200&q=80';
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Middle Column - Main Gift Box Display - 4 columns */}
+          <div className="lg:col-span-4 flex items-center" style={{width:"100%",height:"auto",borderRadius:"5px"}}>
+            <div
+              className="overflow-hidden w-full shadow-lg"
+              style={{
+                height: '400px',
+                borderRadius: '10px',
+              }}
+            >
+              {/* Direct Product Image - High Quality */}
+              <img
+                src={currentGiftBox.image}
+                alt={currentGiftBox.name}
+                className="w-full h-full object-cover"
+                style={{ imageRendering: 'auto' }}
+                loading="eager"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src =
+                    'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80';
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Right Column - Product Cards & Details - 7 columns */}
+          <div className="lg:col-span-7 flex flex-col justify-center gap-3">
+            {/* Product Cards Row with Navigation */}
+            <div className="relative">
+              {/* Cards Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3">
+                {GIFT_BOXES.map((box, index) => (
+                  <button
+                    key={box.id}
+                    onClick={() => setCurrentIndex(index)}
+                    className={`relative overflow-hidden transition-all duration-200 w-full aspect-square ${
+                      index === currentIndex
+                        ? 'shadow-md'
+                        : 'shadow-sm hover:shadow-md'
+                    }`}
+                    style={{
+                      maxWidth: '149px',
+                      borderRadius: '20px',
+                      border: '2px solid rgba(0,0,0,0.1)',
+                    }}
+                  >
+                    {/* Product Image - High Quality */}
+                    <img
+                      src={box.image}
+                      alt={box.name}
+                      className="w-full h-full object-cover"
+                      style={{ imageRendering: 'auto' }}
+                      loading="eager"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src =
+                          'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=400&q=80';
+                      }}
+                    />
+
+                    {/* Label */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-black/85 py-1.5 px-1.5">
+                      <p  style={{
+                  fontFamily: "'gotham2', sans-serif",
+                  fontWeight: 100,
+
+                  fontSize: '10px',
+                  lineHeight: '100%',
+                  letterSpacing: '0%',
+                }}className="text-white text-[8px] font-karla font-bold text-center uppercase tracking-wide leading-tight">
+                        {box.name}
+                      </p>
+                    </div>
+                  </button>
+                ))}
+              </div>
+
+              {/* Navigation Arrows - Below Cards */}
+              <div className="flex justify-end gap-3">
+                <button
+                  onClick={handlePrev}
+                  className="relative text-white flex items-center justify-center shadow-md transition-colors hover:opacity-90"
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    backgroundColor: '#9a7522',
+                    borderRadius: '5px',
+                    opacity: 1,
+                  }}
+                  aria-label="Previous gift box"
+                >
+                  <svg
+                    className="absolute"
+                    style={{
+                      width: '18px',
+                      height: '35px',
+                      top: '2px',
+                      left: '11px',
+                      transform: 'rotate(180deg)',
+                      opacity: 1,
+                    }}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </button>
+                <button
+                  onClick={handleNext}
+                  className="relative text-white flex items-center justify-center shadow-md transition-colors hover:opacity-90"
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    backgroundColor: '#9a7522',
+                    borderRadius: '5px',
+                    opacity: 1,
+                  }}
+                  aria-label="Next gift box"
+                >
+                  <svg
+                    className="absolute"
+                    style={{
+                      width: '18px',
+                      height: '35px',
+                      top: '2px',
+                      left: '11px',
+                      opacity: 1,
+                    }}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            {/* Details Card */}
+            <div className="rounded-lg overflow-hidden shadow-md">
+              {/* Header - Teal Background */}
+              <div className="bg-[#B89B49] px-5 py-5">
+                <h3 style={{
+                  fontFamily: "'gotham2', sans-serif",
+                  fontWeight: 100,
+
+                  fontSize: '18px',
+                  lineHeight: '100%',
+                  letterSpacing: '0%',
+                }} className="text-lg  font-lora font-semibold tracking-[0.2em] uppercase text-white">
+                  {currentGiftBox.title}
+                </h3>
+              </div>
+
+              {/* Content - Light Background */}
+              <div className="bg-[#F0E3AF] p-5 flex flex-col sm:flex-row gap-4 sm:gap-5">
+                {/* Left - Price & Buttons */}
+                <div className="flex flex-col gap-3 flex-shrink-0">
+                  {/* Price */}
+                  <div>
+                    <p style={{
+                  fontFamily: "'gotham2', sans-serif",
+                  fontWeight: 100,
+
+                  fontSize: '16px',
+                  lineHeight: '100%',
+                  letterSpacing: '0%',
+                }}  className="text-3xl font-bold text-[#2C2C2C]">{currentGiftBox.price}</p>
+                    <p style={{
+                  fontFamily: "'gotham2', sans-serif",
+                  fontWeight: 100,
+
+                  fontSize: '12px',
+                  lineHeight: '100%',
+                  letterSpacing: '0%',
+                }}  className="text-[9px] text-gray-500 font-karla uppercase tracking-wide mt-0.5">
+                      MRP (INCL OF ALL TAXES)
+                    </p>
+                  </div>
+
+                  {/* Buttons */}
+                  <div className="flex gap-2">
+                    <button  style={{
+                  fontFamily: "'gotham2', sans-serif",
+                  fontWeight: 100,
+
+                  fontSize: '18px',
+                  lineHeight: '100%',
+                  letterSpacing: '0%',
+                }} className="bg-white text-[#2C2C2C] px-5 py-2.5 rounded font-karla font-bold text-xs hover:bg-gray-50 transition-colors uppercase tracking-wider border border-[#2C2C2C]">
+                      EXPLORE MORE
+                    </button>
+                    <button className="bg-[#9A7522] hover:bg-black text-white px-3 py-2.5 rounded flex items-center justify-center transition-colors">
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Right - Description */}
+                <div className="flex-1">
+                  <p style={{
+                  fontFamily: "'gotham', sans-serif",
+                  fontWeight: 100,
+
+                  fontSize: '11px',
+                  lineHeight: '150%',
+                  letterSpacing: '0%',
+                }}  className="text-[10px] leading-relaxed font-karla text-gray-600">
+                    {currentGiftBox.description}{' '}
+                    <span className="text-[#D4845C] font-semibold hover:underline cursor-pointer">
+                      READ MORE
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default GiftBoxSection;
